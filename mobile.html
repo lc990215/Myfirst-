@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <style>
+        body {
+            max-width: 540px;
+            min-width: 320px;
+            margin: 0 auto;
+            font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+            color: #000;
+            background: #f2f2f2;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        input {
+            -webkit-appearance: none;
+            outline: none;
+        }
+       img,
+       a {
+       -webkit-touch-callout: none;
+       text-decoration: none;
+       color:#fff;
+       }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .search-box {
+            display: flex;
+            width: 100%;
+            height: 44px;
+        }
+
+        .search {
+            margin: 10px 0 0 10px;
+            height: 26px;
+            line-height: 26px;
+            position: relative;
+            flex: 1;
+            border: 1px solid #ccc;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, .2);
+            border-radius: 5px;
+            color: #666;
+            font-size: 12px;
+            padding-left: 30px;
+        }
+
+        .search::before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            width: 18px;
+            height: 18px;
+            background: url('image/sprite.png') no-repeat -59px -275px;
+            background-size: 104px auto;
+            margin-left: 5px;
+            
+        }
+
+        #user {
+            width: 44px;
+            height: 44px;
+            margin-left: 5px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        #user::before {
+            content: "";
+            display: block;
+            background: url('image/sprite.png') no-repeat -59px -194px;
+            background-size: 104px auto;
+            width: 23px;
+            height: 23px;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        .focus {
+            margin-top: -5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .focus ul {
+            width: 500%;
+            overflow: hidden;
+            margin-left: -100%;
+        }
+
+        .focus li {
+            list-style: none;
+            float: left;
+            width: 20%;
+        }
+
+        .focus img {
+            width: 100%;
+        }
+
+        .focus ol {
+            position: absolute;
+            bottom: 8px;
+            right: 3px;
+        }
+
+        .focus ol li {
+            float: left;
+            background-color: #fff;
+            width: 5px;
+            height: 5px;
+            margin-left: 5px;
+            border-radius: 5px;
+            transition: 0.3s all;
+        }
+
+        .focus ol .current {
+            width: 15px;
+        }
+        .local-nav ul {
+            display: flex;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: -5px 6px;
+            padding-bottom: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+        }
+        .local-nav ul li{
+            flex:1;
+        }
+       .local-nav ul li a{
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           color:black;
+           font-size: 12px;
+       }
+
+        .local-nav ul li span[class^=icon-]{
+            display: block;
+            width: 40px;
+            height: 40px;
+        background: url('image/home-fivemain-sprite2x@v7.15.png') no-repeat;
+        background-size: 40px auto;
+        }
+         .local-nav ul li a .icon-scenic{
+         background-position: 0 0;
+         }
+           .local-nav ul li a .icon-play{
+               background-position: 0 -40px;
+
+           }
+            .local-nav ul li a .icon-food{
+            background-position: 0 -80px;
+            }
+             .local-nav ul li a .icon-around{
+             background-position: 0 -120px;
+             }
+             .local-nav ul li a .icon-oneday{
+                 background-position: 0 -160px;
+             }
+            .nav-common {
+                margin: 10px 12px;
+                border-radius: 8px;
+            }
+              .items-hotel {
+                display: flex;
+                background:linear-gradient(to right,#fa5956,#fb8650 54%);
+                margin-top: 15px;
+                border: 1px solid #f2f2f2;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                box-sizing: border-box;
+             }
+           .items-hotel:nth-child(n+2){
+                margin-top: 5px;
+                border-radius: 0;
+            }
+           .items-hotel:nth-child(n+2) .hotel-three{
+                border-radius: 0;
+            }
+             .nav-common  .hotel-one{
+             flex: 31%;
+             width: 31%;
+             
+             background:  url('image/grid-nav-items-hotel@v7.15.png') no-repeat;
+             background-size: 73px auto;
+             background-position: right bottom;
+             line-height: 44px;
+             padding: 10px 0;
+            padding-left: 10px;
+             }
+             .nav-common .hotel-two{
+             flex: 23%;
+             width: 23%;
+             background: url('image/grid-nav-items-minsu@v7.15.png') no-repeat left bottom;
+             background-size: 37px auto;
+             line-height: 44px;
+             padding: 10px 0;
+             border-left: 1px solid #f2f2f2;
+             box-sizing: border-box;
+             border-right: 1px solid #f2f2f2;
+             text-align: center;
+             }
+
+              .nav-common .hotel-three{
+               flex:46%;
+               width: 47%;
+               background:linear-gradient(to right,#ffbc49,#ffd252);
+               line-height: 44px;
+               margin-right: -1px;
+               margin-top: -0.1px;
+               border-top-right-radius: 8px;
+              }
+              .nav-common .hotel-three .item-last {
+                  background: url('image/grid-nav-items-hot.png') right bottom no-repeat;
+                  background-size: 100% auto;
+                  display: block;
+                  width: 100%;
+                  text-align: center;
+                  position:relative;
+                  padding: 10px 0;
+                  
+              }
+              .subnav {
+                  width: 100%;
+                  background-color: #fff;
+                   border-radius: 8px;
+                 
+              }
+                .subnav ul {
+                      display: flex;
+                    flex-wrap: wrap;
+                }
+              .subnav ul li {
+                  flex: 20%;
+                  text-align: center;
+              }
+              .subnav ul li a {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  color:black
+              }
+               .subnav ul li .subnav-icon{
+                   display: block;
+                   width: 28px;
+                   height: 28px;
+                   background: url('image/un_ico_subnav2x@v7.152.png') no-repeat;
+                   background-size: 28px auto;
+                   margin-top: 5px;
+               }
+               .sales-head {
+                   width: 100%;
+                   background-color: #fff;
+                   height: 44px;
+                   position: relative;
+               }
+               .sales-head h2 {
+                   position: relative;  
+                  color: #fff;
+                  text-align: center;
+               
+               }
+               .sales-head h2::after{
+               content: "";
+               width: 79px;
+               height: 15px;
+               display: block;
+               background: url('image/hot.png') no-repeat 0 -20px;
+               background-size: 79px auto;
+               position: absolute;
+               top: 10px;
+               left: 5px;
+               }
+               .sales-head .more {
+                   position: absolute;
+                   top: 5px;
+                   right: 5px;
+                   border-radius: 10px;
+                   padding:3px 20px 3px 10px;
+                   background: -webkit-linear-gradient(left, #FF506C, #FF6BC6);
+               }
+                .sales-head .more::after {
+                    content: "";
+                    position: absolute;
+                    top: 8px;
+                    right: 5px;
+                    width: 7px;
+                    height: 7px;
+                    border-top: 3px solid #fff;
+                    border-right: 3px solid #fff;
+                    display: block;
+                    transform: rotate(45deg);
+                }
+                .sales-bd {
+                    width: 100%;
+                    display: flex;
+                    height: 200px;
+                }
+                .sales-bd a{
+                    flex: 1;
+                }
+                 .adone {
+                   background-color: blue;
+                    background: url('upload/zg091e000001f5gizE76D.png') no-repeat top;
+                    background-size: 100%;
+                 }
+                 .adtwo {
+                     background-color: pink;
+                     background: url('upload/zg081e000001f380z88EC.jpg') no-repeat top;
+                    background-size:100%;
+                 }
+
+    </style>
+</head>
+
+<body>
+    <div class="search-box">
+        <div class="search">搜索：目的地/酒店/景点/航班号</div>
+        <a href="javascript:;" id="user">我 的</a>
+    </div>
+    <div class="focus">
+        <ul>
+            <li><img src="upload/focus3.jpg"></li>
+            <li><img src="upload/focus1.jpg"></li>
+            <li><img src="upload/focus2.jpg"></li>
+            <li><img src="upload/focus3.jpg"></li>
+            <li><img src="upload/focus1.jpg"></li>
+        </ul>
+        <ol>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <div class="local-nav">
+        <ul>
+            <li><a href="javascript:;"><span class="icon-scenic"></span><span>攻略·景点</span></a></li>
+            <li><a href="javascript:;"><span class="icon-play"></span><span>门票·玩乐</span></a></li>
+            <li><a href="javascript:;"><span class="icon-food"></span><span>美食林</span></a></li>
+            <li><a href="javascript:;"><span class="icon-around"></span><span>周边游</span></a></li>
+            <li><a href="javascript:;"><span class="icon-oneday"></span><span>一日游</span></a></li>
+        </ul>
+    </div>
+    <div class="nav-common">
+        <div class="items-hotel">
+          <a href="#" class="hotel-one"><span>酒店</span></a>
+           <a href="#" class="hotel-two"><span>民宿·客栈</span></a>
+            <a href="#" class="hotel-three"><span class="item-last">特价·爆款</span></a>
+        </div>
+         <div class="items-hotel">
+             <a href="#" class="hotel-one"><span>酒店</span></a>
+             <a href="#" class="hotel-two"><span>民宿·客栈</span></a>
+             <a href="#" class="hotel-three"><span class="item-last">特价·爆款</span></a>
+         </div>
+          <div class="items-hotel">
+              <a href="#" class="hotel-one"><span>酒店</span></a>
+              <a href="#" class="hotel-two"><span>民宿·客栈</span></a>
+              <a href="#" class="hotel-three"><span class="item-last">特价·爆款</span></a>
+          </div>
+    </div>
+    <div class="subnav">
+        <ul>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+            <li><a href="#"><span class="subnav-icon"></span><span>电话费</span></a></li>
+        </ul>
+    </div>
+    <div class="sales-head">
+        <h2>"热门活动"</h2>
+        <a href="#" class="more">获取更多福利</a>
+    </div>
+    <div class="sales-bd">
+      <a href="#" class="adone">1</a>
+     <a href="#" class="adtwo">2</a>
+    </div>
+</body>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+    $(function () {
+        var index = 0;
+        var w = $('.focus').width();
+        var timer = setInterval(function () {
+            index++;
+            var translatex = -index * w;
+            $('.focus ul').css({
+                'transform': 'translateX(' + translatex + 'px)'
+            })
+            $('.focus ul').css('transition', 'all 0.5s')
+        }, 2000)
+        $('.focus ul').on('transitionend', function () {
+            if (index >= 3) {
+                index = 0;
+                var translatex = -index * w;
+                $('.focus ul').css('transition', 'none');
+                $('.focus ul').css({
+                    'transform': 'translateX(' + translatex + 'px)'
+                })
+            } else if (index < 0) {
+                index = 2;
+                var translatex = -index * w;
+                $('.focus ul').css('transition', 'none');
+                $('.focus ul').css({
+                    'transform': 'translateX(' + translatex + 'px)'
+                })
+            }
+            $('ol li').removeClass().eq(index).addClass('current');
+        })
+        var startx = 0;
+        var movex = 0;
+        var flag = false;
+        $('.focus ul').on('touchstart', function (e) {
+           startx = e.targetTouches[0].pageX;
+         
+            clearInterval(timer);
+        })
+        $('.focus ul').on('touchmove', function (e) {
+            movex = e.targetTouches[0].pageX - startx;
+              
+            var translatex = -index * w + movex;
+            $('.focus ul').css('transition', 'none');
+            $('.focus ul').css({
+                'transform': 'translateX(' + translatex + 'px)'
+            })
+            e.preventDefault();
+            flag = true;
+        })
+        $('.focus ul').on('touchend', function () {
+            if(flag){
+            if (Math.abs(movex) > 50) {
+                if (movex > 0) {
+                    index--;
+                } 
+                else {
+                    index++;
+                }
+                var translatex = -index * w;
+                $('.focus ul').css('transition', 'all 0.5s')
+                $('.focus ul').css({
+                    'transform': 'translateX('+translatex+'px)'
+                })
+            }
+            else{
+                 var translatex = -index * w;
+                 $('.focus ul').css({
+                 'transform': 'translateX('+translatex+'px)'
+                 })
+            }
+            clearInterval(timer)
+            timer = setInterval(function () {
+            index++;
+            var translatex = -index * w;
+            $('.focus ul').css({
+            'transform': 'translateX(' + translatex + 'px)'
+            })
+            $('.focus ul').css('transition', 'all 0.5s')
+            }, 2000)
+        }
+        })
+    })
+</script>
+
+</html>

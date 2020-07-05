@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            height: 50px;
+            background-color: #f3f3f3;
+            margin-top: 50px;
+            line-height: 50px;
+            font-size: 12px;
+            padding-left: 10px;
+        }
+
+        .header .select-all {
+            width: 160px;
+        }
+
+        .header>div {
+            float: left;
+        }
+
+        .t-item {
+            width: 500px;
+        }
+
+        .t-price {
+            width: 160px;
+        }
+
+        .t-num {
+            width: 150px;
+        }
+
+        .t-sum {
+            width: 150px;
+        }
+
+
+
+        .item {
+            padding: 20px 0 0 10px;
+            height: 220px;
+            margin-top: 10px;
+            border: 1px dotted;
+            border-top: 2px solid;
+        }
+
+        .p-check {
+            width: 80px;
+        }
+
+        .item>div {
+            float: left;
+        }
+
+        .item .p-goods {
+            width: 580px;
+        }
+
+        .item .p-goods .goods-img {
+            float: left;
+            width: 80px;
+            height: 80px;
+        }
+
+        .item .p-goods .goods-text {
+            float: left;
+            width: 230px;
+            margin-left: 10px;
+        }
+
+        .item .p-price {
+            width: 131px;
+        }
+
+        .item .p-num {
+            width: 170px;
+        }
+
+        .item .p-num button {
+            width: 18px;
+            height: 18px;
+            text-align: center;
+        }
+
+        .item .p-num input {
+            outline: none;
+            width: 55px;
+            height: 17px;
+            text-align: center;
+        }
+
+        .item .p-sum {
+            width: 160px;
+        }
+
+        a:hover {
+            color: #ea6a33;
+        }
+
+        .p-checked {
+            background-color: #fff4e8;
+        }
+
+        .shoppingcar {
+
+            height: 63px;
+            margin-top: 10px;
+            margin-bottom: 100px;
+            border: 1px dotted;
+            line-height: 63px;
+            padding-left: 10px;
+        }
+
+        .shoppingcar>div {
+            float: left;
+        }
+
+        .select-all {
+            width: 100px;
+        }
+
+        .del-select {
+            width: 140px;
+        }
+
+        .clear-car {
+            width: 650px;
+        }
+
+        em {
+            font-style: normal;
+            color: red;
+        }
+
+        .select-num {
+            width: 105px;
+        }
+
+        .car-sum {
+            width: 99px;
+        }
+
+        .car-sum em {
+            font-size: 16px;
+        }
+
+        .btn-car {
+            width: 94px;
+            height: 100%;
+            background-color: red;
+        }
+
+        .btn-car a {
+            color: #fff;
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header w">
+        <div class="select-all"><input type="checkbox" class="check-all">
+            <span>全选</span></div>
+        <div class="t-item">商品</div>
+        <div class="t-price">单价</div>
+        <div class="t-num">数量</div>
+        <div class="t-sum">小计</div>
+        <div class="t-action">操作</div>
+    </header>
+    <div class="item-list">
+        <div class="item w p-checked">
+            <div class="p-check"><input type="checkbox" checked="checked" class="j-check"></div>
+            <div class="p-goods">
+                <div class="goods-img"><img src="upload/p1.jpg" alt=""></div>
+                <p class="goods-text">【5本26.8元】经典儿童文学彩图青少版八十天环游地球中学生语文教学大纲</p>
+            </div>
+            <div class="p-price">￥12.60</div>
+            <div class="p-num"><button class="jian">-</button><input type="text" value="1"><button
+                    class="jia">+</button></div>
+            <div class="p-sum">￥12.60</div>
+            <div class="p-del"><a href="javascipt:;">删除</a></div>
+        </div>
+        <div class="item w">
+            <div class="p-check"><input type="checkbox" class="j-check"></div>
+            <div class="p-goods">
+                <div class="goods-img"><img src="upload/p2.jpg" alt=""></div>
+                <p class="goods-text">【2000张贴纸】贴纸书 3-6岁 贴画儿童 贴画书全套12册 贴画 贴纸儿童 汽</p>
+            </div>
+            <div class="p-price">￥24.80</div>
+            <div class="p-num"><button class="jian">-</button><input type="text" value="1"><button
+                    class="jia">+</button></div>
+            <div class="p-sum">￥24.80</div>
+            <div class="p-del"><a href="javascipt:;">删除</a></div>
+        </div>
+        <div class="item w">
+            <div class="p-check"><input type="checkbox" class="j-check"></div>
+            <div class="p-goods">
+                <div class="goods-img"><img src="upload/p3.jpg" alt=""></div>
+                <p class="goods-text">唐诗三百首+成语故事全2册 一年级课外书 精装注音儿童版 小学生二三年级课外阅读书籍</p>
+            </div>
+            <div class="p-price">￥29.80</div>
+            <div class="p-num"><button class="jian">-</button><input type="text" value="1"><button
+                    class="jia">+</button></div>
+            <div class="p-sum">￥29.80</div>
+            <div class="p-del"><a href="javascipt:;">删除</a></div>
+        </div>
+    </div>
+    <div class="shoppingcar w">
+        <div class="select-all"><input type="checkbox" class="check-all">全选</div>
+        <div class="del-select"><a href="javascipt:;">删除选中商品</a></div>
+        <div class="clear-car"><a href="javascipt:;">清空购物车</a></div>
+        <div class="select-num">已经选<em>1</em>件商品</div>
+        <div class="car-sum">总价:<em>￥12.60</em></div>
+        <div class="btn-car"><a href="javascipt:;">去结算</a></div>
+    </div>
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $('.check-all').on('change', function () {
+                $('.check-all,.j-check').prop('checked', $(this).prop('checked'));
+                if ($(this).prop('checked')) {
+                    $('.item').addClass('p-checked');
+                } else {
+                    $('.item').removeClass('p-checked');
+                }
+            })
+            $(".j-check").change(function() {
+                if($(".j-check:checked").length === $(".j-check").length){
+                    $('.check-all').prop("checked",true);
+                }
+                else{
+                      $('.check-all').prop("checked",false);
+                }
+            if ($(this).prop("checked")) {
+              
+                $(this).parents(".item").addClass("p-checked");
+            } else { 
+                
+                $(this).parents(".item").removeClass("p-checked");
+            }
+        })
+        $('.jia').on('click',function () {
+            var num = $(this).parents().children('input').val();
+             num++;
+            var price = $(this).parents().siblings('.p-price').html().substring(1);
+            var sum = (num*price).toFixed(2);
+            $(this).parents().siblings('.p-sum').html('￥'+sum)
+            $(this).parents().children('input').val(num)
+           getSum();
+          })
+           $('.jian').on('click',function () {
+            var num = $(this).parents().children('input').val();
+           num--;
+           if(num == 0){
+               num= 1;
+           }
+            var price = $(this).parents().siblings('.p-price').html().substring(1);
+            var sum = (num*price).toFixed(2);
+            $(this).parents().siblings('.p-sum').html('￥'+sum)
+            $(this).parents().children('input').val(num)
+            getSum();
+           })
+
+           function getSum() {
+               var sum = 0;
+               var num = 0;
+               $('.item .p-sum').each(function (i,e) {
+               sum += parseFloat($(e).html().substring(1))
+                 })
+                $('.car-sum em').text('￥'+sum.toFixed(2))
+                 $('.p-num input').each(function (i,e) {
+                     num += parseInt($(e).val())
+                   })
+                   $('.select-num em').text(num);
+             }    
+             getSum();
+             $('.del-select a').on('click',function () {
+                 $('.p-checked').remove();
+                 getSum();
+                 
+               })
+               $('.clear-car a').on('click',function () {
+                   $('.item').remove();
+                   getSum();
+                 })
+                 $('.p-del a').on('click',function () {
+                    $(this).parents().parents('.item').remove()
+                    getSum()
+                   })
+                   $('.p-num input').on('change',function () {
+                        if($(this).val() < 0){
+                            $(this).val(1);
+                        }
+                        var num = $(this).val();
+                        var price = $(this).parents().siblings('.p-price').html().substring(1);
+                        var sum = (num*price).toFixed(2)
+                        $(this).parents().siblings('.p-sum').html('￥'+sum)
+                        getSum();
+                     })
+        })
+    </script>
+</body>
+
+</html>
